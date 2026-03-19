@@ -1,0 +1,1710 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Asmaa Malainine · Digital Brand Strategist</title>
+
+  <!-- Bootstrap 5.3.2 -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" />
+  <!-- Font Awesome 6.5.0 -->
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet" />
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;0,900;1,400;1,700&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;1,9..40,400&display=swap" rel="stylesheet" />
+
+  <style>
+    /* ────────────────────────────────────────────────
+       CSS VARIABLES & RESET
+    ──────────────────────────────────────────────── */
+    :root {
+      --violet:      #7C3AED;
+      --violet-light:#A78BFA;
+      --violet-soft: #EDE9FE;
+      --violet-mid:  #DDD6FE;
+      --violet-dark: #5B21B6;
+      --violet-deep: #2D1B69;
+      --bg:          #faf9ff;
+      --dark:        #1a1025;
+      --text-muted:  #6b5f80;
+      --white:       #ffffff;
+      --radius:      16px;
+      --radius-sm:   10px;
+      --shadow-soft: 0 4px 24px rgba(124,58,237,.10);
+      --shadow-hover:0 12px 40px rgba(124,58,237,.22);
+      --transition:  .35s cubic-bezier(.4,0,.2,1);
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'DM Sans', sans-serif;
+      background: var(--bg);
+      color: var(--dark);
+      overflow-x: hidden;
+      line-height: 1.65;
+    }
+
+    h1,h2,h3,h4,h5 { font-family: 'Playfair Display', serif; }
+
+    a { text-decoration: none; color: inherit; }
+
+    section { padding: 90px 0; }
+
+    /* ────────────────────────────────────────────────
+       ANIMATIONS
+    ──────────────────────────────────────────────── */
+    .fade-up {
+      opacity: 0;
+      transform: translateY(30px);
+      transition: opacity .6s ease, transform .6s ease;
+    }
+    .fade-up.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+    .fade-up.delay-1 { transition-delay: .1s; }
+    .fade-up.delay-2 { transition-delay: .2s; }
+    .fade-up.delay-3 { transition-delay: .3s; }
+    .fade-up.delay-4 { transition-delay: .4s; }
+
+    /* ────────────────────────────────────────────────
+       NAVBAR
+    ──────────────────────────────────────────────── */
+    #mainNav {
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      background: rgba(250, 249, 255, .82);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      border-bottom: 1px solid var(--violet-mid);
+      padding: 0;
+      transition: box-shadow .3s;
+    }
+    #mainNav.scrolled {
+      box-shadow: 0 2px 20px rgba(124,58,237,.10);
+    }
+    #mainNav .navbar-brand {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.6rem;
+      font-weight: 700;
+      color: var(--violet);
+      letter-spacing: -1px;
+    }
+    #mainNav .nav-link {
+      font-family: 'DM Sans', sans-serif;
+      font-size: .875rem;
+      font-weight: 500;
+      color: var(--text-muted);
+      padding: .5rem 1rem !important;
+      border-radius: 8px;
+      transition: color var(--transition), background var(--transition);
+    }
+    #mainNav .nav-link:hover,
+    #mainNav .nav-link.active {
+      color: var(--violet);
+      background: var(--violet-soft);
+    }
+    .btn-nav-contact {
+      background: var(--violet);
+      color: #fff !important;
+      border-radius: 50px !important;
+      padding: .45rem 1.25rem !important;
+      font-weight: 600 !important;
+      font-size: .85rem !important;
+      transition: background var(--transition), transform var(--transition), box-shadow var(--transition) !important;
+    }
+    .btn-nav-contact:hover {
+      background: var(--violet-dark) !important;
+      transform: translateY(-2px);
+      box-shadow: 0 6px 20px rgba(124,58,237,.35) !important;
+    }
+    .navbar-toggler {
+      border: 1.5px solid var(--violet-mid);
+      border-radius: 8px;
+      padding: .35rem .6rem;
+    }
+    .navbar-toggler-icon {
+      background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3e%3cpath stroke='%237C3AED' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e");
+    }
+
+    /* ────────────────────────────────────────────────
+       HERO
+    ──────────────────────────────────────────────── */
+    #accueil {
+      background: linear-gradient(135deg, #f3f0ff 0%, #ede9fe 50%, #faf9ff 100%);
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      padding: 120px 0 80px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    /* Decorative blobs */
+    .blob {
+      position: absolute;
+      border-radius: 50%;
+      filter: blur(80px);
+      pointer-events: none;
+      z-index: 0;
+    }
+    .blob-1 {
+      width: 480px; height: 480px;
+      background: rgba(167,139,250,.28);
+      top: -120px; right: -80px;
+    }
+    .blob-2 {
+      width: 360px; height: 360px;
+      background: rgba(124,58,237,.15);
+      bottom: -60px; left: -100px;
+    }
+    .blob-3 {
+      width: 200px; height: 200px;
+      background: rgba(167,139,250,.20);
+      top: 50%; left: 42%;
+    }
+
+    #accueil .container { position: relative; z-index: 1; }
+
+    .hero-tag {
+      display: inline-flex;
+      align-items: center;
+      gap: .5rem;
+      background: var(--white);
+      border: 1.5px solid var(--violet-mid);
+      color: var(--violet);
+      font-size: .8rem;
+      font-weight: 600;
+      padding: .4rem 1rem;
+      border-radius: 50px;
+      margin-bottom: 1.5rem;
+      box-shadow: 0 2px 12px rgba(124,58,237,.10);
+      letter-spacing: .03em;
+    }
+    .hero-tag::before {
+      content: '';
+      width: 8px; height: 8px;
+      background: #22c55e;
+      border-radius: 50%;
+      animation: pulse-dot 2s infinite;
+    }
+    @keyframes pulse-dot {
+      0%,100% { box-shadow: 0 0 0 0 rgba(34,197,94,.5); }
+      50%      { box-shadow: 0 0 0 6px rgba(34,197,94,.0); }
+    }
+
+    .hero-title {
+      font-size: clamp(3rem, 7vw, 5.5rem);
+      font-weight: 900;
+      line-height: 1.05;
+      margin-bottom: 1rem;
+      letter-spacing: -2px;
+    }
+    .hero-title .violet-name {
+      color: var(--violet);
+      position: relative;
+      display: inline-block;
+    }
+    .hero-title .violet-name::after {
+      content: '';
+      position: absolute;
+      bottom: 2px; left: 0;
+      width: 100%; height: 4px;
+      background: linear-gradient(90deg, var(--violet), var(--violet-light));
+      border-radius: 2px;
+      opacity: .7;
+    }
+
+    .hero-subtitle {
+      font-size: 1rem;
+      font-weight: 500;
+      color: var(--violet);
+      letter-spacing: .12em;
+      text-transform: uppercase;
+      margin-bottom: .75rem;
+    }
+
+    .hero-desc {
+      font-size: 1.05rem;
+      color: var(--text-muted);
+      max-width: 480px;
+      margin-bottom: 2rem;
+      line-height: 1.7;
+    }
+
+    .btn-hero-primary {
+      background: linear-gradient(135deg, var(--violet), var(--violet-dark));
+      color: #fff;
+      border: none;
+      border-radius: 50px;
+      padding: .75rem 1.8rem;
+      font-weight: 600;
+      font-size: .95rem;
+      transition: all var(--transition);
+      box-shadow: 0 4px 20px rgba(124,58,237,.35);
+    }
+    .btn-hero-primary:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 28px rgba(124,58,237,.5);
+      color: #fff;
+    }
+    .btn-hero-outline {
+      background: transparent;
+      color: var(--violet);
+      border: 2px solid var(--violet);
+      border-radius: 50px;
+      padding: .73rem 1.8rem;
+      font-weight: 600;
+      font-size: .95rem;
+      transition: all var(--transition);
+    }
+    .btn-hero-outline:hover {
+      background: var(--violet);
+      color: #fff;
+      transform: translateY(-2px);
+      box-shadow: 0 8px 28px rgba(124,58,237,.35);
+    }
+
+    /* Photo circle */
+    .photo-wrapper {
+      position: relative;
+      width: 320px;
+      height: 320px;
+      margin: 0 auto;
+    }
+    .photo-circle {
+      width: 150%;
+      height: 150%;
+      border-radius: 50%;
+      background: linear-gradient(135deg, var(--violet), var(--violet-light), #c4b5fd);
+      padding: 4px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: var(--shadow-hover);
+      position: relative;
+    }
+    .photo-inner {
+      width: 100%;
+      height: 100%;
+      border-radius: 50%;
+      background: var(--violet-soft);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+    }
+    .placeholder-icon {
+      font-size: 6rem;
+      color: var(--violet-light);
+    }
+    /* <img src="assets/photo.jpg" alt="Asmaa Malainine" /> */
+
+    /* Floating badges */
+    .badge-float {
+      position: absolute;
+      background: var(--white);
+      border: 1.5px solid var(--violet-mid);
+      border-radius: 12px;
+      padding: .6rem 1rem;
+      font-size: .78rem;
+      font-weight: 700;
+      color: var(--dark);
+      box-shadow: var(--shadow-soft);
+      white-space: nowrap;
+      animation: float 3s ease-in-out infinite;
+    }
+    .badge-float i { color: var(--violet); }
+    .badge-float-1 { top: 10%; left: -20px; animation-delay: 0s; }
+    .badge-float-2 { bottom: 12%; right: -20px; animation-delay: 1.5s; }
+
+    @keyframes float {
+      0%,100% { transform: translateY(0); }
+      50%      { transform: translateY(-8px); }
+    }
+
+    /* ────────────────────────────────────────────────
+       SECTION TITLES
+    ──────────────────────────────────────────────── */
+    .section-label {
+      font-family: 'DM Sans', sans-serif;
+      font-size: .75rem;
+      font-weight: 700;
+      letter-spacing: .15em;
+      text-transform: uppercase;
+      color: var(--violet);
+      margin-bottom: .5rem;
+    }
+    .section-title {
+      font-size: clamp(1.8rem, 4vw, 2.8rem);
+      font-weight: 700;
+      line-height: 1.15;
+      margin-bottom: 1rem;
+    }
+    .section-title span { color: var(--violet); }
+    .section-divider {
+      width: 50px;
+      height: 4px;
+      background: linear-gradient(90deg, var(--violet), var(--violet-light));
+      border-radius: 2px;
+      margin-bottom: 2rem;
+    }
+    .section-divider.center { margin-left: auto; margin-right: auto; }
+
+    /* ────────────────────────────────────────────────
+       À PROPOS
+    ──────────────────────────────────────────────── */
+    #apropos { background: var(--white); }
+
+    .about-text p {
+      color: var(--text-muted);
+      font-size: 1rem;
+      line-height: 1.8;
+      margin-bottom: 1rem;
+    }
+    .about-text strong { color: var(--dark); }
+
+    .about-keyword {
+      display: inline-block;
+      background: var(--violet-soft);
+      color: var(--violet);
+      border: 1px solid var(--violet-mid);
+      border-radius: 50px;
+      padding: .2rem .9rem;
+      font-size: .8rem;
+      font-weight: 600;
+      margin: .2rem .2rem .2rem 0;
+    }
+
+    .about-card-main {
+      background: linear-gradient(135deg, var(--violet), var(--violet-dark));
+      border-radius: var(--radius);
+      padding: 2rem;
+      color: #fff;
+      margin-bottom: 1rem;
+    }
+    .about-stat { text-align: center; padding: .5rem; }
+    .about-stat-num {
+      font-family: 'Playfair Display', serif;
+      font-size: 2rem;
+      font-weight: 900;
+    }
+    .about-stat-label { font-size: .78rem; opacity: .85; }
+
+    .about-mini-card {
+      background: var(--white);
+      border: 1.5px solid var(--violet-mid);
+      border-radius: var(--radius-sm);
+      padding: 1rem 1.25rem;
+      display: flex;
+      align-items: center;
+      gap: .75rem;
+      margin-bottom: .75rem;
+      transition: all var(--transition);
+    }
+    .about-mini-card:hover {
+      border-color: var(--violet);
+      box-shadow: var(--shadow-soft);
+      transform: translateX(4px);
+    }
+    .about-mini-icon {
+      width: 38px; height: 38px;
+      background: var(--violet-soft);
+      border-radius: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--violet);
+      font-size: .9rem;
+      flex-shrink: 0;
+    }
+    .about-mini-title {
+      font-weight: 700;
+      font-size: .85rem;
+      color: var(--dark);
+    }
+    .about-mini-sub {
+      font-size: .75rem;
+      color: var(--text-muted);
+    }
+
+    /* ────────────────────────────────────────────────
+       COMPÉTENCES
+    ──────────────────────────────────────────────── */
+    #competences { background: var(--bg); }
+
+    .skill-card {
+      background: var(--white);
+      border: 1.5px solid var(--violet-mid);
+      border-radius: var(--radius);
+      padding: 1.75rem;
+      height: 100%;
+      transition: all var(--transition);
+    }
+    .skill-card:hover {
+      transform: translateY(-4px);
+      box-shadow: var(--shadow-hover);
+      border-color: var(--violet);
+    }
+    .skill-card-icon {
+      width: 48px; height: 48px;
+      background: linear-gradient(135deg, var(--violet-soft), var(--violet-mid));
+      border-radius: 14px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--violet);
+      font-size: 1.15rem;
+      margin-bottom: 1rem;
+    }
+    .skill-card-title {
+      font-family: 'Playfair Display', serif;
+      font-size: 1rem;
+      font-weight: 700;
+      color: var(--dark);
+      margin-bottom: .75rem;
+    }
+    .skill-tag {
+      display: inline-block;
+      background: var(--violet-soft);
+      color: var(--violet-dark);
+      border-radius: 50px;
+      padding: .2rem .75rem;
+      font-size: .75rem;
+      font-weight: 600;
+      margin: .2rem .2rem .2rem 0;
+      border: 1px solid var(--violet-mid);
+    }
+
+    /* Languages */
+    .lang-card {
+      background: var(--white);
+      border: 1.5px solid var(--violet-mid);
+      border-radius: var(--radius);
+      padding: 1.5rem 2rem;
+      text-align: center;
+      transition: all var(--transition);
+    }
+    .lang-card:hover {
+      transform: translateY(-4px);
+      box-shadow: var(--shadow-hover);
+      border-color: var(--violet-light);
+    }
+    .lang-flag { font-size: 2rem; margin-bottom: .5rem; }
+    .lang-name {
+      font-family: 'Playfair Display', serif;
+      font-weight: 700;
+      font-size: 1rem;
+      color: var(--dark);
+    }
+    .lang-level {
+      font-size: .78rem;
+      color: var(--text-muted);
+      font-weight: 500;
+      margin-top: .15rem;
+    }
+    .lang-dots {
+      display: flex;
+      justify-content: center;
+      gap: 4px;
+      margin-top: .6rem;
+    }
+    .lang-dot {
+      width: 8px; height: 8px;
+      border-radius: 50%;
+      background: var(--violet-mid);
+    }
+    .lang-dot.filled { background: var(--violet); }
+
+    /* ────────────────────────────────────────────────
+       EXPÉRIENCES (Timeline)
+    ──────────────────────────────────────────────── */
+    #experiences { background: var(--white); }
+
+    .timeline {
+      position: relative;
+      padding-left: 40px;
+    }
+    .timeline::before {
+      content: '';
+      position: absolute;
+      left: 14px;
+      top: 8px;
+      bottom: 8px;
+      width: 2px;
+      background: linear-gradient(to bottom, var(--violet), var(--violet-mid));
+      border-radius: 2px;
+    }
+
+    .timeline-item {
+      position: relative;
+      margin-bottom: 2.5rem;
+    }
+    .timeline-item:last-child { margin-bottom: 0; }
+
+    .timeline-dot {
+      position: absolute;
+      left: -32px;
+      top: 6px;
+      width: 18px; height: 18px;
+      background: var(--violet);
+      border: 3px solid var(--white);
+      border-radius: 50%;
+      box-shadow: 0 0 0 3px var(--violet-mid);
+      z-index: 1;
+    }
+    .timeline-dot.active {
+      background: linear-gradient(135deg, var(--violet), var(--violet-light));
+      box-shadow: 0 0 0 3px var(--violet-mid), 0 0 14px rgba(124,58,237,.4);
+      animation: pulse-ring 2s infinite;
+    }
+    @keyframes pulse-ring {
+      0%   { box-shadow: 0 0 0 3px var(--violet-mid), 0 0 0 0 rgba(124,58,237,.4); }
+      70%  { box-shadow: 0 0 0 3px var(--violet-mid), 0 0 0 10px rgba(124,58,237,0); }
+      100% { box-shadow: 0 0 0 3px var(--violet-mid), 0 0 0 0 rgba(124,58,237,0); }
+    }
+
+    .timeline-card {
+      background: var(--bg);
+      border: 1.5px solid var(--violet-mid);
+      border-radius: var(--radius);
+      padding: 1.5rem;
+      transition: all var(--transition);
+    }
+    .timeline-card:hover {
+      border-color: var(--violet);
+      box-shadow: var(--shadow-soft);
+      transform: translateX(4px);
+    }
+    .timeline-date {
+      display: inline-flex;
+      align-items: center;
+      gap: .4rem;
+      background: var(--violet-soft);
+      color: var(--violet);
+      border-radius: 50px;
+      padding: .2rem .8rem;
+      font-size: .75rem;
+      font-weight: 700;
+      margin-bottom: .75rem;
+      border: 1px solid var(--violet-mid);
+    }
+    .timeline-title {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.1rem;
+      font-weight: 700;
+      color: var(--dark);
+      margin-bottom: .2rem;
+    }
+    .timeline-role {
+      font-size: .85rem;
+      font-weight: 600;
+      color: var(--violet);
+      margin-bottom: .4rem;
+    }
+    .timeline-org {
+      font-size: .82rem;
+      color: var(--text-muted);
+    }
+    .timeline-desc {
+      font-size: .88rem;
+      color: var(--text-muted);
+      margin-top: .75rem;
+      line-height: 1.6;
+    }
+
+    /* ────────────────────────────────────────────────
+       PROJETS
+    ──────────────────────────────────────────────── */
+    #projets { background: var(--bg); }
+
+    .project-card {
+      background: var(--white);
+      border: 1.5px solid var(--violet-mid);
+      border-radius: var(--radius);
+      overflow: hidden;
+      height: 100%;
+      transition: all var(--transition);
+    }
+    .project-card:hover {
+      transform: translateY(-4px);
+      box-shadow: var(--shadow-hover);
+      border-color: var(--violet);
+    }
+    .project-header {
+      background: linear-gradient(135deg, var(--violet), var(--violet-dark));
+      padding: 1.75rem 1.5rem 1.25rem;
+      position: relative;
+      overflow: hidden;
+    }
+    .project-header::before {
+      content: '';
+      position: absolute;
+      top: -30px; right: -30px;
+      width: 120px; height: 120px;
+      background: rgba(255,255,255,.06);
+      border-radius: 50%;
+    }
+    .project-header::after {
+      content: '';
+      position: absolute;
+      bottom: -20px; left: 40px;
+      width: 80px; height: 80px;
+      background: rgba(255,255,255,.04);
+      border-radius: 50%;
+    }
+    .project-icon {
+      width: 44px; height: 44px;
+      background: rgba(255,255,255,.15);
+      border-radius: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #fff;
+      font-size: 1.1rem;
+      margin-bottom: .75rem;
+      position: relative;
+      z-index: 1;
+    }
+    .project-name {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.05rem;
+      font-weight: 700;
+      color: #fff;
+      position: relative;
+      z-index: 1;
+    }
+    .project-type {
+      font-size: .72rem;
+      color: rgba(255,255,255,.75);
+      font-weight: 500;
+      position: relative;
+      z-index: 1;
+    }
+    .project-body {
+      padding: 1.25rem 1.5rem 1.5rem;
+    }
+    .project-desc {
+      font-size: .85rem;
+      color: var(--text-muted);
+      line-height: 1.65;
+      margin-bottom: 1rem;
+    }
+    .project-tech {
+      display: inline-block;
+      background: var(--violet-soft);
+      color: var(--violet-dark);
+      border-radius: 50px;
+      padding: .15rem .65rem;
+      font-size: .72rem;
+      font-weight: 600;
+      margin: .15rem .1rem;
+      border: 1px solid var(--violet-mid);
+    }
+
+    /* ────────────────────────────────────────────────
+       FORMATION
+    ──────────────────────────────────────────────── */
+    #formation { background: var(--white); }
+
+    .edu-card {
+      background: var(--bg);
+      border: 1.5px solid var(--violet-mid);
+      border-radius: var(--radius);
+      padding: 2rem;
+      display: flex;
+      align-items: flex-start;
+      gap: 1.25rem;
+      height: 100%;
+      transition: all var(--transition);
+    }
+    .edu-card:hover {
+      border-color: var(--violet);
+      box-shadow: var(--shadow-hover);
+      transform: translateY(-4px);
+    }
+    .edu-icon {
+      width: 52px; height: 52px;
+      background: linear-gradient(135deg, var(--violet), var(--violet-dark));
+      border-radius: 14px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #fff;
+      font-size: 1.25rem;
+      flex-shrink: 0;
+    }
+    .edu-year {
+      display: inline-block;
+      background: var(--violet-soft);
+      color: var(--violet);
+      border-radius: 50px;
+      padding: .15rem .75rem;
+      font-size: .72rem;
+      font-weight: 700;
+      margin-bottom: .5rem;
+      border: 1px solid var(--violet-mid);
+    }
+    .edu-title {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.1rem;
+      font-weight: 700;
+      color: var(--dark);
+      margin-bottom: .25rem;
+    }
+    .edu-school {
+      font-size: .85rem;
+      color: var(--violet);
+      font-weight: 600;
+      margin-bottom: .25rem;
+    }
+    .edu-desc {
+      font-size: .82rem;
+      color: var(--text-muted);
+    }
+
+    /* ────────────────────────────────────────────────
+       CONTACT
+    ──────────────────────────────────────────────── */
+    #contact {
+      background: linear-gradient(135deg, var(--dark) 0%, var(--violet-deep) 100%);
+      padding: 90px 0;
+    }
+
+    #contact .section-label { color: var(--violet-light); }
+    #contact .section-title { color: #fff; }
+    #contact .section-divider { background: linear-gradient(90deg, var(--violet-light), var(--violet)); }
+
+    .contact-link {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      padding: 1.25rem 1.5rem;
+      background: rgba(255,255,255,.06);
+      border: 1px solid rgba(255,255,255,.10);
+      border-radius: var(--radius);
+      margin-bottom: 1rem;
+      transition: all var(--transition);
+      color: rgba(255,255,255,.85);
+      text-decoration: none;
+    }
+    .contact-link:hover {
+      background: rgba(124,58,237,.25);
+      border-color: rgba(124,58,237,.5);
+      transform: translateX(6px);
+      color: #fff;
+    }
+    .contact-link-icon {
+      width: 44px; height: 44px;
+      background: linear-gradient(135deg, var(--violet), var(--violet-dark));
+      border-radius: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #fff;
+      font-size: 1rem;
+      flex-shrink: 0;
+    }
+    .contact-link-label {
+      font-size: .72rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: .08em;
+      color: var(--violet-light);
+      display: block;
+    }
+    .contact-link-value {
+      font-size: .9rem;
+      font-weight: 500;
+    }
+    .contact-link-arrow {
+      margin-left: auto;
+      color: rgba(255,255,255,.35);
+      font-size: .85rem;
+      transition: transform var(--transition), color var(--transition);
+    }
+    .contact-link:hover .contact-link-arrow {
+      transform: translateX(4px);
+      color: var(--violet-light);
+    }
+
+    /* Contact form */
+    .contact-form-wrap {
+      background: rgba(255,255,255,.06);
+      border: 1px solid rgba(255,255,255,.10);
+      border-radius: var(--radius);
+      padding: 2rem;
+    }
+    .form-label {
+      font-size: .8rem;
+      font-weight: 600;
+      color: rgba(255,255,255,.6);
+      text-transform: uppercase;
+      letter-spacing: .06em;
+      margin-bottom: .4rem;
+    }
+    .form-control {
+      background: rgba(255,255,255,.08) !important;
+      border: 1px solid rgba(255,255,255,.15) !important;
+      border-radius: 10px !important;
+      color: #fff !important;
+      font-size: .9rem !important;
+      padding: .75rem 1rem !important;
+      transition: border-color var(--transition), box-shadow var(--transition) !important;
+    }
+    .form-control::placeholder { color: rgba(255,255,255,.35) !important; }
+    .form-control:focus {
+      border-color: var(--violet-light) !important;
+      box-shadow: 0 0 0 3px rgba(124,58,237,.2) !important;
+      outline: none !important;
+      background: rgba(255,255,255,.10) !important;
+    }
+    .btn-send {
+      background: linear-gradient(135deg, var(--violet), var(--violet-dark));
+      color: #fff;
+      border: none;
+      border-radius: 50px;
+      padding: .8rem 2rem;
+      font-weight: 700;
+      font-size: .9rem;
+      width: 100%;
+      transition: all var(--transition);
+      box-shadow: 0 4px 20px rgba(124,58,237,.4);
+    }
+    .btn-send:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 28px rgba(124,58,237,.6);
+    }
+
+    /* ────────────────────────────────────────────────
+       FOOTER
+    ──────────────────────────────────────────────── */
+    footer {
+      background: var(--dark);
+      padding: 1.5rem 0;
+      text-align: center;
+      border-top: 1px solid rgba(255,255,255,.06);
+    }
+    footer p {
+      font-size: .82rem;
+      color: rgba(255,255,255,.45);
+      margin: 0;
+    }
+    footer span { color: var(--violet-light); }
+
+    /* ────────────────────────────────────────────────
+       TOAST / SUCCESS MESSAGE
+    ──────────────────────────────────────────────── */
+    .toast-success {
+      position: fixed;
+      bottom: 2rem;
+      right: 2rem;
+      background: var(--violet);
+      color: #fff;
+      padding: .9rem 1.5rem;
+      border-radius: var(--radius-sm);
+      font-size: .88rem;
+      font-weight: 600;
+      box-shadow: 0 8px 24px rgba(124,58,237,.5);
+      z-index: 9999;
+      transform: translateY(100px);
+      opacity: 0;
+      transition: all .4s cubic-bezier(.4,0,.2,1);
+    }
+    .toast-success.show {
+      transform: translateY(0);
+      opacity: 1;
+    }
+
+    /* ────────────────────────────────────────────────
+       RESPONSIVE
+    ──────────────────────────────────────────────── */
+    @media (max-width: 991px) {
+      #accueil { padding: 100px 0 60px; }
+      .hero-title { font-size: clamp(2.4rem, 8vw, 3.5rem); }
+      .hero-desc { max-width: 100%; }
+      .photo-wrapper { width: 240px; height: 240px; margin-top: 2.5rem; }
+      .timeline { padding-left: 30px; }
+    }
+    @media (max-width: 600px) {
+      .badge-float { display: none; }
+    }
+    @media (max-width: 767px) {
+      section { padding: 65px 0; }
+      .hero-title { font-size: 2.4rem; letter-spacing: -1px; }
+      .photo-wrapper { width: 200px; height: 200px; }
+      .navbar-collapse {
+        background: rgba(250,249,255,.98);
+        border: 1px solid var(--violet-mid);
+        border-radius: var(--radius);
+        padding: 1rem;
+        margin-top: .5rem;
+        box-shadow: var(--shadow-soft);
+      }
+    }
+  </style>
+</head>
+<body>
+
+<!-- ══════════════════════════════════════════════════
+     NAVBAR
+══════════════════════════════════════════════════ -->
+<nav id="mainNav" class="navbar navbar-expand-lg">
+  <div class="container">
+    <a class="navbar-brand" href="#accueil">AM.</a>
+
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navContent" aria-controls="navContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse justify-content-end" id="navContent">
+      <ul class="navbar-nav align-items-lg-center gap-lg-1 mb-2 mb-lg-0 me-3">
+        <li class="nav-item"><a class="nav-link" href="#apropos">À propos</a></li>
+        <li class="nav-item"><a class="nav-link" href="#competences">Compétences</a></li>
+        <li class="nav-item"><a class="nav-link" href="#experiences">Expérience</a></li>
+        <li class="nav-item"><a class="nav-link" href="#projets">Projets</a></li>
+        <li class="nav-item"><a class="nav-link" href="#formation">Formation</a></li>
+      </ul>
+      <a href="#contact" class="nav-link btn-nav-contact">Me contacter</a>
+    </div>
+  </div>
+</nav>
+
+
+<!-- ══════════════════════════════════════════════════
+     HERO
+══════════════════════════════════════════════════ -->
+<section id="accueil">
+  <!-- Blobs -->
+  <div class="blob blob-1"></div>
+  <div class="blob blob-2"></div>
+  <div class="blob blob-3"></div>
+
+  <div class="container">
+    <div class="row align-items-center">
+
+      <!-- Left col -->
+      <div class="col-lg-6 fade-up">
+        <div class="hero-tag">✦ Disponible pour des projets</div>
+
+        <h1 class="hero-title">
+          Asmaa<br>
+          <span class="violet-name">Malainine</span>
+        </h1>
+
+        <p class="hero-subtitle">Digital Brand Strategist · UX Designer · Product Thinker</p>
+
+        <p class="hero-desc">
+          Étudiante en 2ème année Marketing Digital &amp; Expérience Utilisateur à l'ESTD Dakhla.
+          Je transforme des idées en produits digitaux — stratégie, design, e-commerce et au-delà.
+        </p>
+
+        <div class="d-flex flex-wrap gap-3">
+          <a href="Mon_CV\cv-asmaa-malainine.pdf" class="btn-hero-primary" download>
+            <i class="fas fa-download me-2"></i>Télécharger CV
+          </a>
+          <a href="#projets" class="btn-hero-outline">
+            Voir mes projets <i class="fas fa-arrow-right ms-2"></i>
+          </a>
+        </div>
+      </div>
+
+      <!-- Right col — Photo -->
+      <div class="col-lg-6 d-flex justify-content-center fade-up delay-2">
+        <div class="photo-wrapper">
+          <div class="photo-circle">
+            <div class="photo-inner">
+              <img src="moi.jpeg" alt="Asmaa Malainine" style="width:100%;height:100%;object-fit:cover;border-radius:50%;" />
+            </div>
+          </div>
+
+          <!-- Floating badges -->
+          <div class="badge-float badge-float-1">
+            <i class="fas fa-rocket me-2"></i>10+ Projets réalisés
+          </div>
+          <div class="badge-float badge-float-2">
+            <i class="fas fa-star me-2"></i>Future Founder ✦
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+
+<!-- ══════════════════════════════════════════════════
+     À PROPOS
+══════════════════════════════════════════════════ -->
+<section id="apropos">
+  <div class="container">
+
+    <div class="row align-items-center g-5">
+
+      <!-- Left -->
+      <div class="col-lg-6 fade-up">
+        <p class="section-label">Qui suis-je ?</p>
+        <h2 class="section-title">À <span>propos</span> de moi</h2>
+        <div class="section-divider"></div>
+
+        <div class="about-text">
+          <p>
+            Je suis <strong>Asmaa Malainine</strong>, une étudiante <strong>multipotentielle</strong> passionnée par l'intersection entre créativité et stratégie digitale. À seulement 20 ans, j'ai déjà mené des projets en UX Design, branding, e-commerce et marketing data-driven.
+          </p>
+          <p>
+            Ma curiosité me pousse à explorer de nouveaux domaines sans m'y limiter. Je suis à l'aise aussi bien devant Figma qu'Excel, aussi bien en mode créatif qu'analytique.
+          </p>
+          <p>
+            Mon ambition ? Devenir une <strong>Digital Product Leader</strong> — concevoir des produits qui marquent les esprits et créent de la valeur réelle.
+          </p>
+
+          <div class="mt-3">
+            <span class="about-keyword">Créative</span>
+            <span class="about-keyword">Analytique</span>
+            <span class="about-keyword">Multipotentielle</span>
+            <span class="about-keyword">Stratégique</span>
+            <span class="about-keyword">Curieuse</span>
+            <span class="about-keyword">Entrepreneur mindset</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Right -->
+      <div class="col-lg-6 fade-up delay-2">
+
+        <!-- Stats card -->
+        <div class="about-card-main mb-3">
+          <div class="row text-center">
+            <div class="col-4 about-stat">
+              <div class="about-stat-num">10+</div>
+              <div class="about-stat-label">Projets réalisés</div>
+            </div>
+            <div class="col-4 about-stat" style="border-left:1px solid rgba(255,255,255,.2);border-right:1px solid rgba(255,255,255,.2);">
+              <div class="about-stat-num">3</div>
+              <div class="about-stat-label">Plateformes maîtrisées</div>
+            </div>
+            <div class="col-4 about-stat">
+              <div class="about-stat-num">2</div>
+              <div class="about-stat-label">Ans d'études MDEX</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Mini cards -->
+        <div class="about-mini-card">
+          <div class="about-mini-icon">
+            <i class="fas fa-paint-brush"></i>
+          </div>
+          <div>
+            <div class="about-mini-title">Creative Design</div>
+            <div class="about-mini-sub">UX, UI, Brand Identity &amp; Visual Storytelling</div>
+          </div>
+        </div>
+
+        <div class="about-mini-card">
+          <div class="about-mini-icon">
+            <i class="fas fa-chess"></i>
+          </div>
+          <div>
+            <div class="about-mini-title">Strategic Thinking</div>
+            <div class="about-mini-sub">Data-driven decisions &amp; Digital Product Strategy</div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+  </div>
+</section>
+
+
+<!-- ══════════════════════════════════════════════════
+     COMPÉTENCES
+══════════════════════════════════════════════════ -->
+<section id="competences">
+  <div class="container">
+
+    <div class="text-center fade-up">
+      <p class="section-label">Mon arsenal</p>
+      <h2 class="section-title">Mes <span>compétences</span></h2>
+      <div class="section-divider center"></div>
+    </div>
+
+    <div class="row g-4 mb-5">
+
+      <!-- Design & UX -->
+      <div class="col-sm-6 col-lg-3 fade-up delay-1">
+        <div class="skill-card">
+          <div class="skill-card-icon"><i class="fas fa-pencil-ruler"></i></div>
+          <div class="skill-card-title">Design &amp; UX</div>
+          <span class="skill-tag">Figma</span>
+          <span class="skill-tag">Canva</span>
+          <span class="skill-tag">UX Design</span>
+          <span class="skill-tag">Wireframes</span>
+          <span class="skill-tag">Customer Journey</span>
+          <span class="skill-tag">Prototypage</span>
+        </div>
+      </div>
+
+      <!-- E-commerce & Web -->
+      <div class="col-sm-6 col-lg-3 fade-up delay-2">
+        <div class="skill-card">
+          <div class="skill-card-icon"><i class="fas fa-shopping-cart"></i></div>
+          <div class="skill-card-title">E-commerce &amp; Web</div>
+          <span class="skill-tag">Shopify</span>
+          <span class="skill-tag">Wix</span>
+          <span class="skill-tag">Squarespace</span>
+          <span class="skill-tag">WordPress</span>
+          <span class="skill-tag">WooCommerce</span>
+          <span class="skill-tag">Bootstrap</span>
+          <span class="skill-tag">HTML/CSS</span>
+        </div>
+      </div>
+
+      <!-- Data & Marketing -->
+      <div class="col-sm-6 col-lg-3 fade-up delay-3">
+        <div class="skill-card">
+          <div class="skill-card-icon"><i class="fas fa-chart-bar"></i></div>
+          <div class="skill-card-title">Data &amp; Marketing</div>
+          <span class="skill-tag">PowerBI</span>
+          <span class="skill-tag">Excel TCD</span>
+          <span class="skill-tag">Segmentation IA</span>
+          <span class="skill-tag">CRM/ERP</span>
+          <span class="skill-tag">SEO</span>
+          <span class="skill-tag">Étude de marché</span>
+        </div>
+      </div>
+
+      <!-- Brand & Contenu -->
+      <div class="col-sm-6 col-lg-3 fade-up delay-4">
+        <div class="skill-card">
+          <div class="skill-card-icon"><i class="fas fa-bullhorn"></i></div>
+          <div class="skill-card-title">Brand &amp; Contenu</div>
+          <span class="skill-tag">Stratégie de contenu</span>
+          <span class="skill-tag">Social Media</span>
+          <span class="skill-tag">Brand Identity</span>
+          <span class="skill-tag">Copywriting</span>
+          <span class="skill-tag">Marketing Digital</span>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- Languages -->
+    <div class="text-center mb-3 fade-up">
+      <p class="section-label" style="margin-bottom:.25rem;">Communication</p>
+      <h3 class="h4" style="font-family:'Playfair Display',serif;color:var(--dark);">Langues</h3>
+    </div>
+
+    <div class="row g-3 justify-content-center">
+
+      <div class="col-auto fade-up delay-1" style="min-width:160px;">
+        <div class="lang-card">
+          <div class="lang-flag">🇲🇦</div>
+          <div class="lang-name">Arabe</div>
+          <div class="lang-level">Langue maternelle</div>
+          <div class="lang-dots">
+            <div class="lang-dot filled"></div>
+            <div class="lang-dot filled"></div>
+            <div class="lang-dot filled"></div>
+            <div class="lang-dot filled"></div>
+            <div class="lang-dot filled"></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-auto fade-up delay-2" style="min-width:160px;">
+        <div class="lang-card">
+          <div class="lang-flag">🇫🇷</div>
+          <div class="lang-name">Français</div>
+          <div class="lang-level">Intermédiaire B1</div>
+          <div class="lang-dots">
+            <div class="lang-dot filled"></div>
+            <div class="lang-dot filled"></div>
+            <div class="lang-dot filled"></div>
+            <div class="lang-dot"></div>
+            <div class="lang-dot"></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-auto fade-up delay-3" style="min-width:160px;">
+        <div class="lang-card">
+          <div class="lang-flag">🇬🇧</div>
+          <div class="lang-name">Anglais</div>
+          <div class="lang-level">Courant B2</div>
+          <div class="lang-dots">
+            <div class="lang-dot filled"></div>
+            <div class="lang-dot filled"></div>
+            <div class="lang-dot filled"></div>
+            <div class="lang-dot filled"></div>
+            <div class="lang-dot"></div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+  </div>
+</section>
+
+
+<!-- ══════════════════════════════════════════════════
+     EXPÉRIENCES
+══════════════════════════════════════════════════ -->
+<section id="experiences">
+  <div class="container">
+
+    <div class="text-center fade-up mb-5">
+      <p class="section-label">Mon parcours</p>
+      <h2 class="section-title">Mes <span>expériences</span></h2>
+      <div class="section-divider center"></div>
+    </div>
+
+    <div class="row justify-content-center">
+      <div class="col-lg-8">
+        <div class="timeline">
+
+          <!-- 1 -->
+          <div class="timeline-item fade-up">
+            <div class="timeline-dot active"></div>
+            <div class="timeline-card">
+              <span class="timeline-date"><i class="fas fa-circle" style="font-size:.5rem;"></i> 2025 · En cours</span>
+              <div class="timeline-title">App Web Segmentation IA</div>
+              <div class="timeline-role">Projet de Fin d'Études (PFE)</div>
+              <div class="timeline-org"><i class="fas fa-map-marker-alt me-1"></i> ESTD Dakhla</div>
+              <div class="timeline-desc">
+                Développement d'une application web de segmentation client basée sur l'intelligence artificielle — de l'étude UX à l'implémentation des algorithmes de clustering.
+              </div>
+            </div>
+          </div>
+
+          <!-- 2 -->
+          <div class="timeline-item fade-up delay-1">
+            <div class="timeline-dot"></div>
+            <div class="timeline-card">
+              <span class="timeline-date"><i class="fas fa-circle" style="font-size:.5rem;"></i> 2025 · 48h</span>
+              <div class="timeline-title">IA-4-Future Challenge</div>
+              <div class="timeline-role">Consultante Patrimoine Culturel</div>
+              <div class="timeline-org"><i class="fas fa-map-marker-alt me-1"></i> Projet Trig Dakhla</div>
+              <div class="timeline-desc">
+                Hackathon 48h centré sur l'IA au service du patrimoine culturel. Conception d'une solution numérique pour valoriser et préserver le patrimoine de la région de Dakhla.
+              </div>
+            </div>
+          </div>
+
+          <!-- 3 -->
+          <div class="timeline-item fade-up delay-2">
+            <div class="timeline-dot"></div>
+            <div class="timeline-card">
+              <span class="timeline-date"><i class="fas fa-circle" style="font-size:.5rem;"></i> 2025 · 1 Mois</span>
+              <div class="timeline-title">Stagiaire Marketing CRM</div>
+              <div class="timeline-role">Stage Professionnel</div>
+              <div class="timeline-org"><i class="fas fa-map-marker-alt me-1"></i> BMCE Bank — Dakhla</div>
+              <div class="timeline-desc">
+                Analyse des données clients, segmentation de la base CRM, création de tableaux de bord PowerBI et participation à la stratégie de fidélisation digitale.
+              </div>
+            </div>
+          </div>
+
+          <!-- 4 -->
+          <div class="timeline-item fade-up delay-3">
+            <div class="timeline-dot"></div>
+            <div class="timeline-card">
+              <span class="timeline-date"><i class="fas fa-circle" style="font-size:.5rem;"></i> 2024 · 3 Mois</span>
+              <div class="timeline-title">Chef de Projet</div>
+              <div class="timeline-role">Alternance</div>
+              <div class="timeline-org"><i class="fas fa-map-marker-alt me-1"></i> Cabinet F&amp;BM</div>
+              <div class="timeline-desc">
+                Pilotage de projets digitaux, coordination d'équipes créatives, conception de stratégies de communication et suivi des KPIs de performance.
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+
+<!-- ══════════════════════════════════════════════════
+     PROJETS
+══════════════════════════════════════════════════ -->
+<section id="projets">
+  <div class="container">
+
+    <div class="text-center fade-up mb-5">
+      <p class="section-label">Mon portfolio</p>
+      <h2 class="section-title">Mes <span>projets</span></h2>
+      <div class="section-divider center"></div>
+    </div>
+
+    <div class="row g-4">
+
+      <!-- 1 -->
+      <div class="col-md-6 col-lg-4 fade-up delay-1">
+        <div class="project-card">
+          <div class="project-header">
+            <div class="project-icon"><i class="fas fa-robot"></i></div>
+            <div class="project-name">App Segmentation IA</div>
+            <div class="project-type">PFE · Web App</div>
+          </div>
+          <div class="project-body">
+            <p class="project-desc">Application web de segmentation client par clustering IA. De la recherche utilisateur à l'interface finale, en passant par le modèle de données.</p>
+            <span class="project-tech">Python</span>
+            <span class="project-tech">Scikit-learn</span>
+            <span class="project-tech">Figma</span>
+            <span class="project-tech">Bootstrap</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- 2 -->
+      <div class="col-md-6 col-lg-4 fade-up delay-2">
+        <div class="project-card">
+          <div class="project-header">
+            <div class="project-icon"><i class="fas fa-pen-nib"></i></div>
+            <div class="project-name">Tazga Brand</div>
+            <div class="project-type">Brand Strategy · Contenu</div>
+          </div>
+          <div class="project-body">
+            <p class="project-desc">Stratégie de marque complète pour Tazga — identité visuelle, tone of voice, plan de contenu et déploiement sur les réseaux sociaux.</p>
+            <span class="project-tech">Canva</span>
+            <span class="project-tech">Brand Identity</span>
+            <span class="project-tech">Social Media</span>
+            <span class="project-tech">Copywriting</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- 3 -->
+      <div class="col-md-6 col-lg-4 fade-up delay-3">
+        <div class="project-card">
+          <div class="project-header">
+            <div class="project-icon"><i class="fas fa-mobile-alt"></i></div>
+            <div class="project-name">HubSpot ESTD</div>
+            <div class="project-type">UX Design · Figma</div>
+          </div>
+          <div class="project-body">
+            <p class="project-desc">Conception UX/UI d'un espace étudiant pour l'ESTD Dakhla — wireframes, prototypes interactifs et tests utilisateurs complets.</p>
+            <span class="project-tech">Figma</span>
+            <span class="project-tech">UX Research</span>
+            <span class="project-tech">Prototypage</span>
+            <span class="project-tech">Design System</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- 4 -->
+      <div class="col-md-6 col-lg-4 fade-up delay-1">
+        <div class="project-card">
+          <div class="project-header">
+            <div class="project-icon"><i class="fas fa-shopping-bag"></i></div>
+            <div class="project-name">E-commerce ×3</div>
+            <div class="project-type">Shopify · Wix · Squarespace</div>
+          </div>
+          <div class="project-body">
+            <p class="project-desc">Création et optimisation de 3 boutiques en ligne sur différentes plateformes — catalogue produits, tunnel d'achat et SEO e-commerce.</p>
+            <span class="project-tech">Shopify</span>
+            <span class="project-tech">Wix</span>
+            <span class="project-tech">Squarespace</span>
+            <span class="project-tech">SEO</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- 5 -->
+      <div class="col-md-6 col-lg-4 fade-up delay-2">
+        <div class="project-card">
+          <div class="project-header">
+            <div class="project-icon"><i class="fas fa-wave-square"></i></div>
+            <div class="project-name">Lagoon Waves</div>
+            <div class="project-type">UI Dev · WordPress</div>
+          </div>
+          <div class="project-body">
+            <p class="project-desc">Développement front-end d'un site vitrine pour un club nautique à Dakhla — design épuré, animations et intégration WordPress.</p>
+            <span class="project-tech">WordPress</span>
+            <span class="project-tech">Elementor</span>
+            <span class="project-tech">CSS</span>
+            <span class="project-tech">WooCommerce</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- 6 -->
+      <div class="col-md-6 col-lg-4 fade-up delay-3">
+        <div class="project-card">
+          <div class="project-header">
+            <div class="project-icon"><i class="fas fa-chart-pie"></i></div>
+            <div class="project-name">SmartPilot</div>
+            <div class="project-type">Project Management</div>
+          </div>
+          <div class="project-body">
+            <p class="project-desc">Outil de pilotage de projets digitaux avec tableaux de bord PowerBI, suivi des KPIs et reporting automatisé pour les équipes marketing.</p>
+            <span class="project-tech">PowerBI</span>
+            <span class="project-tech">Excel</span>
+            <span class="project-tech">CRM</span>
+            <span class="project-tech">Data Viz</span>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+
+<!-- ══════════════════════════════════════════════════
+     FORMATION
+══════════════════════════════════════════════════ -->
+<section id="formation">
+  <div class="container">
+
+    <div class="text-center fade-up mb-5">
+      <p class="section-label">Mon éducation</p>
+      <h2 class="section-title">Ma <span>formation</span></h2>
+      <div class="section-divider center"></div>
+    </div>
+
+    <div class="row g-4 justify-content-center">
+
+      <!-- MDEX -->
+      <div class="col-md-6 fade-up delay-1">
+        <div class="edu-card">
+          <div class="edu-icon"><i class="fas fa-graduation-cap"></i></div>
+          <div>
+            <span class="edu-year">2024 – En cours</span>
+            <div class="edu-title">2ème Année MDEX</div>
+            <div class="edu-school">ESTD Dakhla</div>
+            <div class="edu-desc">Marketing Digital &amp; Expérience Utilisateur — Spécialisation en stratégie digitale, UX design, data marketing et gestion de produit.</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Bac -->
+      <div class="col-md-6 fade-up delay-2">
+        <div class="edu-card">
+          <div class="edu-icon"><i class="fas fa-school"></i></div>
+          <div>
+            <span class="edu-year">2023 – 2024</span>
+            <div class="edu-title">Baccalauréat Économique</div>
+            <div class="edu-school">Lycée Lalla Khadija — Dakhla</div>
+            <div class="edu-desc">Mention Bien — Spécialité Sciences Économiques. Fondamentaux en gestion, comptabilité, économie et mathématiques appliquées.</div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+
+<!-- ══════════════════════════════════════════════════
+     CONTACT
+══════════════════════════════════════════════════ -->
+<section id="contact">
+  <div class="container">
+
+    <div class="text-center fade-up mb-5">
+      <p class="section-label">Travaillons ensemble</p>
+      <h2 class="section-title">Me <span style="color:var(--violet-light);">contacter</span></h2>
+      <div class="section-divider center"></div>
+      <p style="color:rgba(255,255,255,.55);font-size:.95rem;max-width:480px;margin:0 auto;">
+        Un projet en tête ? Une collaboration ? N'hésitez pas à me laisser un message.
+      </p>
+    </div>
+
+    <div class="row g-5 align-items-start">
+
+      <!-- Left — Links -->
+      <div class="col-lg-5 fade-up delay-1">
+        <a href="/cdn-cgi/l/email-protection#1a7b69777b7b777b767b737473747f2b235a7d777b737634797577" class="contact-link">
+          <div class="contact-link-icon"><i class="fas fa-envelope"></i></div>
+          <div>
+            <span class="contact-link-label">Email</span>
+            <span class="contact-link-value"><span class="__cf_email__" data-cfemail="ff9e8c929e9e929e939e969196919acec6bf98929e9693d19c9092">[email&#160;protected]</span></span>
+          </div>
+          <i class="fas fa-arrow-right contact-link-arrow"></i>
+        </a>
+
+        <a href="https://www.linkedin.com/in/asmaa-malainine-00771b372" target="_blank" rel="noopener" class="contact-link">
+          <div class="contact-link-icon"><i class="fab fa-linkedin-in"></i></div>
+          <div>
+            <span class="contact-link-label">LinkedIn</span>
+            <span class="contact-link-value">asmaa-malainine</span>
+          </div>
+          <i class="fas fa-arrow-right contact-link-arrow"></i>
+        </a>
+
+        <a href="https://github.com/asmaa635-lang" target="_blank" rel="noopener" class="contact-link">
+          <div class="contact-link-icon"><i class="fab fa-github"></i></div>
+          <div>
+            <span class="contact-link-label">GitHub</span>
+            <span class="contact-link-value">asmaa635-lang</span>
+          </div>
+          <i class="fas fa-arrow-right contact-link-arrow"></i>
+        </a>
+
+        <div class="contact-link" style="cursor:default;">
+          <div class="contact-link-icon"><i class="fas fa-map-marker-alt"></i></div>
+          <div>
+            <span class="contact-link-label">Localisation</span>
+            <span class="contact-link-value">Dakhla, Maroc 🇲🇦</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Right — Form -->
+      <div class="col-lg-7 fade-up delay-2">
+        <div class="contact-form-wrap">
+          <div class="row g-3">
+            <div class="col-sm-6">
+              <label class="form-label" for="contactName">Nom complet</label>
+              <input type="text" id="contactName" class="form-control" placeholder="Votre nom" />
+            </div>
+            <div class="col-sm-6">
+              <label class="form-label" for="contactEmail">Email</label>
+              <input type="email" id="contactEmail" class="form-control" placeholder="votre@email.com" />
+            </div>
+            <div class="col-12">
+              <label class="form-label" for="contactSubject">Sujet</label>
+              <input type="text" id="contactSubject" class="form-control" placeholder="Objet de votre message" />
+            </div>
+            <div class="col-12">
+              <label class="form-label" for="contactMessage">Message</label>
+              <textarea id="contactMessage" class="form-control" rows="5" placeholder="Dites-moi tout…"></textarea>
+            </div>
+            <div class="col-12 mt-1">
+              <button class="btn-send" onclick="handleFormSubmit()">
+                <i class="fas fa-paper-plane me-2"></i>Envoyer le message
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+
+<!-- ══════════════════════════════════════════════════
+     FOOTER
+══════════════════════════════════════════════════ -->
+<footer>
+  <div class="container">
+    <p>© 2026 <span>Asmaa Malainine</span> · Designé avec 💜 à Dakhla, Maroc</p>
+  </div>
+</footer>
+
+<!-- Toast notification -->
+<div class="toast-success" id="toastSuccess">
+  <i class="fas fa-check-circle me-2"></i>Message envoyé avec succès !
+</div>
+
+
+<!-- Bootstrap JS -->
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+
+<script>
+/* ────────────────────────────────────────────────
+   FADE-UP — IntersectionObserver
+──────────────────────────────────────────────── */
+const fadeEls = document.querySelectorAll('.fade-up');
+
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      entry.target.classList.add('visible');
+      observer.unobserve(entry.target);
+    }
+  });
+}, { threshold: 0.05, rootMargin: '0px 0px -30px 0px' });
+
+fadeEls.forEach(el => observer.observe(el));
+
+// Fallback : tout afficher si IntersectionObserver ne se déclenche pas
+setTimeout(() => {
+  fadeEls.forEach(el => el.classList.add('visible'));
+}, 800);
+
+
+/* ────────────────────────────────────────────────
+   NAVBAR — Scroll shadow + Active link
+──────────────────────────────────────────────── */
+const nav = document.getElementById('mainNav');
+const navLinks = document.querySelectorAll('#mainNav .nav-link:not(.btn-nav-contact)');
+
+const sections = document.querySelectorAll('section[id]');
+
+window.addEventListener('scroll', () => {
+  // Shadow on scroll
+  if (window.scrollY > 20) {
+    nav.classList.add('scrolled');
+  } else {
+    nav.classList.remove('scrolled');
+  }
+
+  // Active link by section
+  let current = '';
+  sections.forEach(sec => {
+    const secTop = sec.offsetTop - 100;
+    if (window.scrollY >= secTop) current = sec.getAttribute('id');
+  });
+
+  navLinks.forEach(link => {
+    link.classList.remove('active');
+    const href = link.getAttribute('href');
+    if (href && href === '#' + current) {
+      link.classList.add('active');
+    }
+  });
+});
+
+
+/* ────────────────────────────────────────────────
+   CONTACT FORM — Faux submit
+──────────────────────────────────────────────── */
+function handleFormSubmit() {
+  const name    = document.getElementById('contactName').value.trim();
+  const email   = document.getElementById('contactEmail').value.trim();
+  const message = document.getElementById('contactMessage').value.trim();
+
+  if (!name || !email || !message) {
+    alert('Merci de remplir au moins votre nom, email et message.');
+    return;
+  }
+
+  // Show toast
+  const toast = document.getElementById('toastSuccess');
+  toast.classList.add('show');
+  setTimeout(() => toast.classList.remove('show'), 3500);
+
+  // Reset fields
+  ['contactName','contactEmail','contactSubject','contactMessage'].forEach(id => {
+    document.getElementById(id).value = '';
+  });
+}
+
+
+/* ────────────────────────────────────────────────
+   Close mobile menu on link click
+──────────────────────────────────────────────── */
+/* ────────────────────────────────────────────────
+   Close mobile menu on link click
+──────────────────────────────────────────────── */
+document.querySelectorAll('#navContent .nav-link').forEach(link => {
+  link.addEventListener('click', () => {
+    const collapse = document.getElementById('navContent');
+    const bsCollapse = bootstrap.Collapse.getInstance(collapse);
+    if (bsCollapse) bsCollapse.hide();
+  });
+});
+</script>
+</body>
+</html>
